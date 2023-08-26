@@ -13,6 +13,11 @@
   "paths": {
     "/categories": {
       "get": {
+        "security": [
+          {
+            "CategoryAuth": []
+          }
+        ],
         "tags": [
           "Category API"
         ],
@@ -46,6 +51,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "CategoryAuth": []
+          }
+        ],
         "tags": [
           "Category API"
         ],
@@ -87,6 +97,11 @@
     },
     "/categories/{categoryId}": {
       "get": {
+        "security": [
+          {
+            "CategoryAuth": []
+          }
+        ],
         "tags": [
           "Category API"
         ],
@@ -94,6 +109,10 @@
         "description": "Get Category By Id",
         "parameters": [
           {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
             "name": "categoryId",
             "in": "path",
             "description": "Category Id"
@@ -124,6 +143,11 @@
         }
       },
       "put": {
+        "security": [
+          {
+            "CategoryAuth": []
+          }
+        ],
         "tags": [
           "Category API"
         ],
@@ -131,6 +155,10 @@
         "description": "Update Category By Id",
         "parameters": [
           {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
             "name": "categoryId",
             "in": "path",
             "description": "Category Id"
@@ -170,6 +198,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "CategoryAuth": []
+          }
+        ],
         "tags": [
           "Category API"
         ],
@@ -177,6 +210,10 @@
         "description": "Delete Category By Id",
         "parameters": [
           {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
             "name": "categoryId",
             "in": "path",
             "description": "Category Id"
@@ -206,6 +243,14 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "CategoryAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Authentication For Category API"
+      }
+    },
     "schemas": {
       "CreateOrUpdateCategory": {
         "type": "object",
