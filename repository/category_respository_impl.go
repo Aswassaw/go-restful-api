@@ -8,8 +8,7 @@ import (
 	"errors"
 )
 
-type CategoryRepositoryImpl struct {
-}
+type CategoryRepositoryImpl struct{}
 
 func (repository *CategoryRepositoryImpl) Create(ctx context.Context, tx *sql.Tx, category domain.Category) domain.Category {
 	SQL := "INSERT INTO category (name) VALUES (?)"
