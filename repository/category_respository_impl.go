@@ -45,6 +45,8 @@ func (repository *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.
 	rows, err := tx.QueryContext(ctx, SQL, categoryId)
 	helper.PanicIfError(err)
 
+	defer rows.Close()
+
 	category := domain.Category{}
 	// jika rows ada isinya
 	if rows.Next() {
@@ -61,6 +63,8 @@ func (repository *CategoryRepositoryImpl) FindAll(ctx context.Context, tx *sql.T
 	SQL := "SELECT id, name FROM category"
 	rows, err := tx.QueryContext(ctx, SQL)
 	helper.PanicIfError(err)
+
+	defer rows.Close()
 
 	// menyiapkan slice untuk menampung semua data category
 	categories := []domain.Category{}
