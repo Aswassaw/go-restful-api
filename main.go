@@ -5,6 +5,7 @@ import (
 	"andry-pebrianto/go-restful-api/controller"
 	"andry-pebrianto/go-restful-api/exception"
 	"andry-pebrianto/go-restful-api/helper"
+	"andry-pebrianto/go-restful-api/middleware"
 	"andry-pebrianto/go-restful-api/repository"
 	"andry-pebrianto/go-restful-api/service"
 	"net/http"
@@ -34,7 +35,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
